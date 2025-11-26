@@ -21,7 +21,7 @@ The project's operational sequence follows the process detailed in the flow diag
 
 **
 
-Images/FLow Diagram.png
+![Project Photo](https://github.com/user-attachments/assets/Flow_Diagram.png)
 **
 
 1.  **Monitoring:** The system continuously calculates the BPM from the AD8232 sensor.
@@ -54,7 +54,7 @@ Images/FLow Diagram.png
 
 The system architecture and connections are detailed in the block diagram, with the following precise pin assignments:
 
-** [Image of Block Diagram.jpg] **
+![Project Photo](https://github.com/user-attachments/assets/Block_Diagram.png)
 
 The pin assignments were carefully chosen to resolve the hardware conflict between the MCP3008 (SPI) and the OLED (I2C):
 

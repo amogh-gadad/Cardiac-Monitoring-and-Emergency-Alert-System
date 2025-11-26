@@ -19,10 +19,7 @@ The system is built on the **Raspberry Pi Pico W** and utilizes an **AD8232 ECG 
 
 The project's operational sequence follows the process detailed in the flow diagram:
 
-**
-
-![Project Photo](https://github.com/user-attachments/assets/Flow_Diagram.png)
-**
+<img src="assets/Flow_Diagram.png" alt="Flow Diagram" width="50%"/>
 
 1.  **Monitoring:** The system continuously calculates the BPM from the AD8232 sensor.
 2.  **Anomaly Detection:** If BPM < 60 or BPM > 120, an internal timer starts.
@@ -54,7 +51,7 @@ The project's operational sequence follows the process detailed in the flow diag
 
 The system architecture and connections are detailed in the block diagram, with the following precise pin assignments:
 
-![Project Photo](https://github.com/user-attachments/assets/Block_Diagram.png)
+<img src="assets/Block_Diagram.png" alt="Block Diagram" width="50%"/>
 
 The pin assignments were carefully chosen to resolve the hardware conflict between the MCP3008 (SPI) and the OLED (I2C):
 

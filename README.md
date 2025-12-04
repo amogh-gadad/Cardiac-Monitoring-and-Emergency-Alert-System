@@ -15,6 +15,14 @@ The system is built on the **Raspberry Pi Pico W** and utilizes an **AD8232 ECG 
 
 ---
 
+## 📸 Prototype Image
+
+The final project assembly, including the Pico W, OLED display, and connected modules (GSM/GPS and ADC), is shown below.
+
+<img src="assets/Prototype_Photo.jpg" alt="Photograph of the final assembled prototype on a breadboard or custom PCB." width="60%"/>
+
+---
+
 ## 🩺 2. Alert Logic and Flow
 
 The project's operational sequence follows the process detailed in the flow diagram:
@@ -92,3 +100,23 @@ You may adjust these values for calibration or testing purposes:
 * `CALL_AFTER_SMS_DELAY`: 5000 (5 seconds delay after SMS before initiating the call)
 
 **Note:** Update the phone numbers (`EMERGENCY1`, `EMERGENCY2`) at the top of the file before compiling.
+
+---
+
+## 🏁 6. Results and Conclusion
+
+### 🔬 Results and Verification
+
+The system successfully meets all functional requirements based on the established hardware configuration:
+
+* **Conflict Resolution:** The critical $\text{SPI/I2C}$ pin conflict (on $\text{GPIO 4}$ and $\text{GPIO 5}$) was resolved by relocating the **$\text{OLED}$ $\text{I2C}$ bus to $\text{GPIO 8}$ and $\text{GPIO 9}$**, ensuring stable communication for both the $\text{ADC}$ and the display.
+* **Anomaly Detection:** The $\text{BPM}$ calculation accurately monitors the $\text{AD8232}$ signal and reliably triggers the alert sequence when the $\text{5}$-second threshold is met for both high ($\text{Tachycardia}$) and low ($\text{Bradycardia}$) heart rates.
+* **Emergency Response Reliability:** The **Location Fallback** mechanism ensures that an emergency message (containing live $\text{GPS}$, last known coordinates, or cell tower $\text{LAC}/\text{CID}$) is sent regardless of $\text{GPS}$ signal quality, immediately followed by the voice call.
+
+### 🚀 Future Scope
+
+While the core emergency alert functionality is robust and complete, the project can be expanded with the following enhancements:
+
+* **Data Logging and Cloud Integration:** Implement an $\text{SD}$ card module or connect via the Pico W's WiFi to log comprehensive $\text{ECG}$ and $\text{BPM}$ history to a cloud database for long-term health tracking and physician review.
+* **Fall Detection:** Introduce an $\text{IMU}$ (e.g., $\text{MPU6050}$) to create a dual-trigger system, activating the emergency protocol upon both cardiac anomaly and sudden impact or fall.
+* **Remote Configuration:** Add $\text{AT}$ command parsing logic to allow authorized users to update $\text{EMERGENCY}$ numbers or $\text{BPM}$ thresholds via incoming $\text{SMS}$ messages.
